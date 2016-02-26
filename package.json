@@ -1,6 +1,6 @@
 {
   "name": "fit-datepicker",
-  "version": "0.2.85",
+  "version": "0.2.86",
   "description": "tb react datapicker",
   "main": "lib/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "fit-style": "^1.1.45",
-    "fit-timepicker": "^0.2.77",
+    "fit-timepicker": "^0.2.78",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "react": "^0.14.7",
