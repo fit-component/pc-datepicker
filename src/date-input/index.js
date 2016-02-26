@@ -82,6 +82,17 @@ export default class DateInput extends React.Component {
         })
     }
 
+    handleIconClick () {
+        this.inputInstance.clear();
+        this.setState({
+            startDate: null,
+            endDate: '',
+            formatString: '',
+            startDateMoment: null,
+            endDateMoment: null
+        })
+    }
+
     handleDateRangeChange(date) {
         let format
         let formatString
@@ -194,6 +205,10 @@ export default class DateInput extends React.Component {
                        placeholder={this.props.type==='dateRange'?'开始日期 ~ 结束日期':null}
                        width={this.props.width||350}
                        icon="calendar"
+                       handleIconClick={this.handleIconClick.bind(this)}
+                       ref={(ref) => {
+                           this.inputInstance = ref
+                       }}
                        style={{width:this.props.width}}/>
 
                 {this.state.showCalendar ?
