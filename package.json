@@ -19,6 +19,9 @@
   "dependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "classnames": "^2.2.1"
+    "fit-timepicker": "^0.0.1",
+    "fit-input": "^0.0.1",
+    "classnames": "^2.2.1",
+    "fit-style": "^0.0.1"
   }
 }
