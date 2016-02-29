@@ -15,7 +15,13 @@ export default class Demo extends React.Component {
     }
 
     handleDateRangeChange(date) {
-        console.log(date.startDate.format('YYYY-MM-DD'), date.endDate.format('YYYY-MM-DD'))
+        if (date) {
+            console.log(date.startDate.format('YYYY-MM-DD'), date.endDate.format('YYYY-MM-DD'))
+        }
+        else {
+            console.log(date)
+        }
+
     }
 
     getDate() {

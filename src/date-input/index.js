@@ -84,6 +84,8 @@ export default class DateInput extends React.Component {
 
     handleIconClick () {
         this.inputInstance.clear();
+        this.props.onChange(this.state.date);
+
         this.setState({
             startDate: null,
             endDate: '',
