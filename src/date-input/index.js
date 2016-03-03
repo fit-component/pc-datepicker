@@ -18,11 +18,7 @@ export default class DateInput extends React.Component {
             date: '',
             startDate: '',
             endDate: '',
-
-            // moment对象
-            dateMoment: null,
-            startDateMoment: null,
-            endDateMoment: null
+            value: this.props.value || this.props.defaultValue,
         }
 
 
@@ -32,6 +28,14 @@ export default class DateInput extends React.Component {
                     showCalendar: false
                 })
             }
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if ('value' in nextProps) {
+            this.setState({
+                value: nextProps.value
+            })
         }
     }
 
@@ -56,6 +60,19 @@ export default class DateInput extends React.Component {
         })
     }
 
+    // 清空日历
+    handleIconClick() {
+        this.inputInstance.clear()
+        this.props.onChange(this.state.date)
+
+        this.setState({
+            formatString: '',
+            startDate: null,
+            endDate: null
+        })
+    }
+
+    // 单个日历日期修改
     handleCalendarChange(date) {
         let format
         let newDate = date.clone()
@@ -78,23 +95,11 @@ export default class DateInput extends React.Component {
         this.setState({
             date: format,
             formatString: format,
-            dateMoment: newDate
+            value: newDate
         })
     }
 
-    handleIconClick () {
-        this.inputInstance.clear();
-        this.props.onChange(this.state.date);
-
-        this.setState({
-            startDate: null,
-            endDate: '',
-            formatString: '',
-            startDateMoment: null,
-            endDateMoment: null
-        })
-    }
-
+    // 范围日历修改日期
     handleDateRangeChange(date) {
         let format
         let formatString
@@ -135,12 +140,15 @@ export default class DateInput extends React.Component {
 
         this.dateRangeMoment = date
 
+        //console.log(start, end)
         this.setState({
             startDate: format.start,
             endDate: format.end,
             formatString: formatString,
-            startDateMoment: start,
-            endDateMoment: end
+            value: {
+                startDate: start || null,
+                endDate: end || null
+            }
         })
     }
 
@@ -163,16 +171,15 @@ export default class DateInput extends React.Component {
         })
 
         let CalendarComponent = (
-            <Calendar date={this.state.dateMoment?this.state.dateMoment.format('DD/MM/YYYY'):null}
+            <Calendar value={this.state.value}
                       onChange={this.handleCalendarChange.bind(this)} {...this.props.calendarOpts}/>
         )
 
         if (this.props.type === 'dateRange') {
             CalendarComponent = (
                 <DateRange onChange={this.handleDateRangeChange.bind(this)}
+                           value={this.state.value}
                            calendars="2"
-                           startDate={this.state.startDateMoment?this.state.startDateMoment.format('DD/MM/YYYY'):null}
-                           endDate={this.state.endDateMoment?this.state.endDateMoment.format('DD/MM/YYYY'):null}
                            toolbar {...this.props.calendarOpts}/>
             )
         }
@@ -223,11 +230,24 @@ export default class DateInput extends React.Component {
     }
 }
 
-DateInput
-    .defaultProps = {
+DateInput.defaultProps = {
+    // @desc 修改回调
     onChange: ()=> {
     },
+
+    // @desc 日历参数,参考 react-date-range
     calendarOpts: {},
+
+    // @desc 日期类型,分为单日历和范围日历
+    // @enum calendar dateRange
     type: 'calendar',
-    showTime: false
+
+    // @desc 是否精确到时分秒
+    showTime: false,
+
+    // @desc 日期
+    value: null,
+
+    // @desc 初始日期
+    defaultValue: null
 }

@@ -4,6 +4,21 @@ import defaultRanges from './default-ranges'
 import './index.scss'
 
 export default class FitDateRange extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            value: this.props.value || this.props.defaultValue
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if ('value' in nextProps) {
+            this.setState({
+                value: nextProps.value
+            })
+        }
+    }
+
     render() {
         let customOpts = {}
 
@@ -13,10 +28,10 @@ export default class FitDateRange extends React.Component {
 
         return (
             <div className="_namespace">
-                <DateRange calendars={this.props.calendars}
-                           startDate={this.props.startDate}
-                           endDate={this.props.endDate}
-                           onChange={this.props.onChange.bind(this)} {...customOpts}/>
+                <DateRange startDate={this.state.value.startDate}
+                           endDate={this.state.value.endDate}
+                           calendars={this.props.calendars}
+                           onChange={this.props.onChange} {...customOpts}/>
             </div>
         )
     }
@@ -33,11 +48,16 @@ FitDateRange.defaultProps = {
     // @desc 是否显示左侧工具栏
     toolbar: false,
 
-    // @desc 开始日期
-    startDate: ()=> {
-    },
+    // @desc 日期
+    value: null,
 
-    // @desc 结束日期
-    endDate: ()=> {
+    // @desc 初始日期
+    defaultValue: {
+        startDate: (now) => {
+            return now.add(0, 'days')
+        },
+        endDate: (now) => {
+            return now.add(0, 'days')
+        }
     }
 }

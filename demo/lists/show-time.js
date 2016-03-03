@@ -4,11 +4,11 @@ import Button from 'fit-button'
 
 export default class Demo extends React.Component {
     handleCalendarChange(date) {
-        console.log(date.format('YYYY-MM-DD'))
+
     }
 
     handleDateRangeChange(date) {
-        console.log(date.startDate.format('YYYY-MM-DD'), date.endDate.format('YYYY-MM-DD'))
+
     }
 
     render() {
