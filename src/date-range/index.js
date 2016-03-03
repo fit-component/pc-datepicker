@@ -28,8 +28,8 @@ export default class FitDateRange extends React.Component {
 
         return (
             <div className="_namespace">
-                <DateRange startDate={this.state.value.startDate}
-                           endDate={this.state.value.endDate}
+                <DateRange startDate={this.state.value&&this.state.value.startDate}
+                           endDate={this.state.value&&this.state.value.endDate}
                            onInit={this.props.onInit.bind(this)}
                            calendars={this.props.calendars}
                            onChange={this.props.onChange} {...customOpts}/>
