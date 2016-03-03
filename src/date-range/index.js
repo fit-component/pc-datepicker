@@ -23,10 +23,21 @@ export default class FitDateRange extends React.Component {
 }
 
 FitDateRange.defaultProps = {
+    // @desc 修改时回调
     onChange: ()=> {
     },
+
+    // @desc 日历数量
     calendars: 1,
+
+    // @desc 是否显示左侧工具栏
     toolbar: false,
-    startDate: null,
-    endDate: null
+
+    // @desc 开始日期
+    startDate: ()=> {
+    },
+
+    // @desc 结束日期
+    endDate: ()=> {
+    }
 }
