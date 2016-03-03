@@ -42,6 +42,7 @@ export default class DateInput extends React.Component {
                 } else {
                     value = date.format('YYYY-MM-DD')
                 }
+                this.props.onChange(date)
             } else {
                 let stateDate = parseInput(this.state.value.startDate)
                 let endDate = parseInput(this.state.value.endDate)
@@ -50,6 +51,10 @@ export default class DateInput extends React.Component {
                 } else {
                     value = stateDate.format('YYYY-MM-DD HH:mm:ss') + ' - ' + endDate.format('YYYY-MM-DD HH:mm:ss')
                 }
+                this.props.onChange({
+                    startDate: stateDate,
+                    endDate: endDate
+                })
             }
 
             this.setState({
