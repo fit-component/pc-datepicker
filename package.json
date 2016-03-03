@@ -1,6 +1,6 @@
 {
   "name": "fit-datepicker",
-  "version": "0.2.101",
+  "version": "0.2.102",
   "description": "tb react datapicker",
   "main": "lib/index.js",
   "scripts": {
