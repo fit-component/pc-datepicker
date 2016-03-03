@@ -32,6 +32,7 @@ export default class DateInput extends React.Component {
     }
 
     componentWillMount() {
+        // 只有设置了初始value, 初始化输入框数据
         if (this.state.value) {
             let value = ''
             if (this.props.type === 'calendar') {
