@@ -6,6 +6,7 @@ import TimePicker from 'fit-timepicker'
 import Input from 'fit-input'
 import $ from 'jquery'
 import classNames from 'classnames'
+import parseInput from '../lib/parse-input'
 import './index.scss'
 
 export default class DateInput extends React.Component {
@@ -18,9 +19,8 @@ export default class DateInput extends React.Component {
             date: '',
             startDate: '',
             endDate: '',
-            value: this.props.value || this.props.defaultValue,
+            value: this.props.value || this.props.defaultValue
         }
-
 
         this.handleDocumentClick = (event)=> {
             if (!$.contains(this.$dom[0], event.target)) {
@@ -28,6 +28,32 @@ export default class DateInput extends React.Component {
                     showCalendar: false
                 })
             }
+        }
+    }
+
+    componentWillMount() {
+        if (this.state.value) {
+            let value = ''
+            if (this.props.type === 'calendar') {
+                let date = parseInput(this.state.value)
+                if (this.props.showTime) {
+                    value = date.format('YYYY-MM-DD HH:mm:ss')
+                } else {
+                    value = date.format('YYYY-MM-DD')
+                }
+            } else {
+                let stateDate = parseInput(this.state.value.startDate)
+                let endDate = parseInput(this.state.value.endDate)
+                if (this.props.showTime) {
+                    value = stateDate.format('YYYY-MM-DD HH:mm:ss') + ' - ' + endDate.format('YYYY-MM-DD HH:mm:ss')
+                } else {
+                    value = stateDate.format('YYYY-MM-DD HH:mm:ss') + ' - ' + endDate.format('YYYY-MM-DD HH:mm:ss')
+                }
+            }
+
+            this.setState({
+                formatString: value
+            })
         }
     }
 

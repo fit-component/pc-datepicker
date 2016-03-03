@@ -20,6 +20,7 @@ export default class FitCalendar extends React.Component {
     render() {
         return (
             <Calendar date={this.state.value}
+                      onInit={this.props.onInit.bind(this)}
                       onChange={this.props.onChange.bind(this)}/>
         )
     }
@@ -36,5 +37,9 @@ FitCalendar.defaultProps = {
     // @desc 初始日期
     defaultValue: (now) => {
         return now.add(0, 'days')
+    },
+
+    // @desc 初始化
+    onInit: (date)=> {
     }
 }
