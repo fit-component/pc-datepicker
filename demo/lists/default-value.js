@@ -1,5 +1,5 @@
 import React from 'react'
-import { DateInput, DateRange } from 'fit-datepicker'
+import { DateInput } from 'fit-datepicker'
 
 const defaultValue = {
     startDate: (now) => {
@@ -15,7 +15,7 @@ export default class Demo extends React.Component {
         return (
             <div style={{display:'flex'}}>
                 <DateInput defaultValue={now => { return now.add(2, 'days')}}/>
-                <DateRange defaultValue={defaultValue}/>
+                <DateInput type="dateRange" defaultValue={defaultValue}/>
             </div>
         )
     }
