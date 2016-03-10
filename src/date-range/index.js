@@ -1,6 +1,7 @@
 import React from 'react'
 import { DateRange } from 'react-date-range'
 import defaultRanges from './default-ranges'
+import classNames from 'classnames'
 import './index.scss'
 
 export default class FitDateRange extends React.Component {
@@ -20,19 +21,25 @@ export default class FitDateRange extends React.Component {
     }
 
     render() {
+        const {className, toolbar, onInit, calendars, onChange, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            [className]: className
+        })
+
         let customOpts = {}
 
-        if (this.props.toolbar) {
+        if (toolbar) {
             customOpts.ranges = defaultRanges
         }
 
         return (
-            <div className="_namespace">
+            <div {...others} className={classes}>
                 <DateRange startDate={this.state.value&&this.state.value.startDate}
                            endDate={this.state.value&&this.state.value.endDate}
-                           onInit={this.props.onInit.bind(this)}
-                           calendars={this.props.calendars}
-                           onChange={this.props.onChange} {...customOpts}/>
+                           onInit={onInit.bind(this)}
+                           calendars={calendars}
+                           onChange={onChange} {...customOpts}/>
             </div>
         )
     }

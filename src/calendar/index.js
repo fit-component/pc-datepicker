@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Calendar } from 'react-date-range'
 
 export default class FitCalendar extends React.Component {
@@ -18,10 +19,17 @@ export default class FitCalendar extends React.Component {
     }
 
     render() {
+        const {className, onInit, onChange, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            [className]: className
+        })
+
         return (
-            <Calendar date={this.state.value}
-                      onInit={this.props.onInit.bind(this)}
-                      onChange={this.props.onChange.bind(this)}/>
+            <Calendar {...others} className={classes}
+                                  date={this.state.value}
+                                  onInit={onInit.bind(this)}
+                                  onChange={onChange.bind(this)}/>
         )
     }
 }

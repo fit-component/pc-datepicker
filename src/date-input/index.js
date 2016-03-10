@@ -194,31 +194,37 @@ export default class DateInput extends React.Component {
     }
 
     render() {
+        const {className, showTime, calendarOpts, type, width, input, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            [className]: className
+        })
+
         let calendarContainerClass = classNames({
             'calendar-container': true,
             [this.state.position]: true,
-            'show-time': this.props.showTime,
+            'show-time': showTime,
             'show': this.state.showCalendar,
             'hide': !this.state.showCalendar
         })
 
         let CalendarComponent = (
             <Calendar value={this.state.value}
-                      onChange={this.handleCalendarChange.bind(this)} {...this.props.calendarOpts}/>
+                      onChange={this.handleCalendarChange.bind(this)} {...calendarOpts}/>
         )
 
-        if (this.props.type === 'dateRange') {
+        if (type === 'dateRange') {
             CalendarComponent = (
                 <DateRange onChange={this.handleDateRangeChange.bind(this)}
                            value={this.state.value}
                            calendars="2"
-                           toolbar {...this.props.calendarOpts}/>
+                           toolbar {...calendarOpts}/>
             )
         }
 
         let TimePickerComponent = null
-        if (this.props.showTime) {
-            if (this.props.type !== 'dateRange') {
+        if (showTime) {
+            if (type !== 'dateRange') {
                 TimePickerComponent = (
                     <TimePicker input={{styles:{input:{borderLeft:'none',borderTop:'none',borderRight:'none'}}}}
                                 onChange={this.handleTimepicker.bind(this,'date')}/>
@@ -238,19 +244,18 @@ export default class DateInput extends React.Component {
         }
 
         return (
-            <div className="_namespace"
-                 style={this.props.style}>
+            <div {...others} className={classes}>
                 <Input onFocus={this.handleFocus.bind(this)}
-                    {...this.props.input}
+                    {...input}
                        value={this.state.formatString}
-                       placeholder={this.props.type==='dateRange'?'开始日期 ~ 结束日期':null}
-                       width={this.props.width||350}
+                       placeholder={type==='dateRange'?'开始日期 ~ 结束日期':null}
+                       width={width||350}
                        icon="calendar"
                        handleIconClick={this.handleIconClick.bind(this)}
                        ref={(ref) => {
                            this.inputInstance = ref
                        }}
-                       style={{width:this.props.width}}/>
+                       style={{width:width}}/>
 
                 {this.state.showCalendar ?
                     <div className={calendarContainerClass}>
