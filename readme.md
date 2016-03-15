@@ -3,6 +3,5 @@
 ---
 
 ````jsx
-// 依赖 https://github.com/Adphorus/react-date-range
-npm install fit-datepicker /* or */ fis3 install fit-datepicker
+npm install fit-datepicker
 ````
