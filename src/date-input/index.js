@@ -14,12 +14,12 @@ export default class DateInput extends React.Component {
         super(props)
         this.state = {
             showCalendar: false,
-            position: 'bottom',
+            position    : 'bottom',
             formatString: '',
-            date: '',
-            startDate: '',
-            endDate: '',
-            value: this.props.value || this.props.defaultValue
+            date        : '',
+            startDate   : '',
+            endDate     : '',
+            value       : this.props.value || this.props.defaultValue
         }
 
         this.handleDocumentClick = (event)=> {
@@ -53,7 +53,7 @@ export default class DateInput extends React.Component {
                 }
                 this.props.onChange({
                     startDate: stateDate,
-                    endDate: endDate
+                    endDate  : endDate
                 })
             }
 
@@ -88,7 +88,7 @@ export default class DateInput extends React.Component {
 
         this.setState({
             showCalendar: true,
-            position: position
+            position    : position
         })
     }
 
@@ -99,8 +99,8 @@ export default class DateInput extends React.Component {
 
         this.setState({
             formatString: '',
-            startDate: null,
-            endDate: null
+            startDate   : null,
+            endDate     : null
         })
     }
 
@@ -125,9 +125,9 @@ export default class DateInput extends React.Component {
         this.calendarMoment = date
 
         this.setState({
-            date: format,
+            date        : format,
             formatString: format,
-            value: newDate
+            value       : newDate
         })
     }
 
@@ -153,19 +153,19 @@ export default class DateInput extends React.Component {
 
             this.props.onChange({
                 startDate: start,
-                endDate: end
+                endDate  : end
             })
 
             format = {
                 start: start,
-                end: end
+                end  : end
             }
             formatString = start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss')
         } else {
             this.props.onChange(date)
             format = {
                 start: date.startDate,
-                end: date.endDate
+                end  : date.endDate
             }
             formatString = format.start.format('YYYY-MM-DD') + ' - ' + format.end.format('YYYY-MM-DD')
         }
@@ -174,12 +174,12 @@ export default class DateInput extends React.Component {
 
         //console.log(start, end)
         this.setState({
-            startDate: format.start,
-            endDate: format.end,
+            startDate   : format.start,
+            endDate     : format.end,
             formatString: formatString,
-            value: {
+            value       : {
                 startDate: start || null,
-                endDate: end || null
+                endDate  : end || null
             }
         })
     }
@@ -197,15 +197,15 @@ export default class DateInput extends React.Component {
         const {className, showTime, calendarOpts, type, width, input, ...others} = this.props
         const classes = classNames({
             '_namespace': true,
-            [className]: className
+            [className] : className
         })
 
         let calendarContainerClass = classNames({
-            'calendar-container': true,
+            'calendar-container' : true,
             [this.state.position]: true,
-            'show-time': showTime,
-            'show': this.state.showCalendar,
-            'hide': !this.state.showCalendar
+            'show-time'          : showTime,
+            'show'               : this.state.showCalendar,
+            'hide'               : !this.state.showCalendar
         })
 
         let CalendarComponent = (
@@ -249,7 +249,7 @@ export default class DateInput extends React.Component {
                     {...input}
                        value={this.state.formatString}
                        placeholder={type==='dateRange'?'开始日期 ~ 结束日期':null}
-                       width={width||350}
+                       width={width||null}
                        icon="calendar"
                        handleIconClick={this.handleIconClick.bind(this)}
                        ref={(ref) => {
