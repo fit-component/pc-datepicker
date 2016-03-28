@@ -15,7 +15,7 @@ export default class Demo extends React.Component {
         return (
             <div style={{display:'flex'}}>
                 <DateInput defaultValue={now => { return now.add(2, 'days')}}/>
-                <DateInput type="dateRange" defaultValue={defaultValue}/>
+                <DateInput type="dateRange" defaultValue={defaultValue} style={{marginLeft:10}}/>
             </div>
         )
     }
