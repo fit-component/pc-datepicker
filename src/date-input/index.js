@@ -49,7 +49,7 @@ export default class DateInput extends React.Component {
                 if (this.props.showTime) {
                     value = stateDate.format('YYYY-MM-DD HH:mm:ss') + ' - ' + endDate.format('YYYY-MM-DD HH:mm:ss')
                 } else {
-                    value = stateDate.format('YYYY-MM-DD HH:mm:ss') + ' - ' + endDate.format('YYYY-MM-DD HH:mm:ss')
+                    value = stateDate.format('YYYY-MM-DD') + ' - ' + endDate.format('YYYY-MM-DD')
                 }
                 this.props.onChange({
                     startDate: stateDate,
