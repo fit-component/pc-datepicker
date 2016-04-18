@@ -19,7 +19,7 @@ export default class Demo extends React.Component {
                            onChange={this.handleCalendarChange.bind(this)}/>
                 <DateInput style={{marginLeft:10}}
                            type="dateRange"
-                           width="400"
+                           width={400}
                            showTime
                            onChange={this.handleDateRangeChange.bind(this)}/>
             </div>

@@ -37,7 +37,7 @@ export default class Demo extends React.Component {
                            onChange={this.handleCalendarChange.bind(this)}/>
                 <DateInput style={{marginLeft:10}}
                            type="dateRange"
-                           width="300"
+                           width={300}
                            ref={(ref)=>{
                                 this.dateRangeRef = ref
                            }}
