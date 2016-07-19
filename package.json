@@ -1,6 +1,6 @@
 {
   "name": "fit-datepicker",
-  "version": "3.1.42",
+  "version": "3.1.44",
   "description": "tb react datapicker",
   "main": "lib/index.js",
   "scripts": {
@@ -17,13 +17,13 @@
   "author": "tieba",
   "license": "ISC",
   "dependencies": {
-    "react": "^15.0.1",
+    "react": "^0.14.0 || ^15.0.0",
     "classnames": "^2.2.3",
     "react-date-range": "^0.2.4",
-    "react-dom": "^15.0.1",
-    "fit-timepicker": "^3.1.42",
-    "fit-input": "^5.0.19",
-    "jquery": "^2.1.4",
+    "react-dom": "^0.14.0 || ^15.0.0",
+    "fit-timepicker": "^3.1.44",
+    "fit-input": "^5.0.21",
+    "jquery": "^1.12.4",
     "moment": "^2.12.0"
   },
   "typings": "lib/index.d.ts"
