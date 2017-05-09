@@ -1,6 +1,6 @@
 {
   "name": "fit-datepicker",
-  "version": "3.1.89",
+  "version": "3.1.90",
   "description": "tb react datapicker",
   "main": "lib/index.js",
   "scripts": {
@@ -21,8 +21,8 @@
     "classnames": "2.2.3",
     "react-date-range": "0.2.4",
     "react-dom": "^0.14.0 || ^15.0.0",
-    "fit-timepicker": "^3.1.87",
-    "fit-input": "^5.0.52",
+    "fit-timepicker": "^3.1.88",
+    "fit-input": "^5.0.53",
     "jquery": "1.12.4",
     "moment": "2.12.0"
   },
